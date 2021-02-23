@@ -8,12 +8,11 @@ export class Login extends Component {
     this.state = {
       email: " ",
       password: " ",
-      name: " ",
     };
     this.onSignUp = this.onSignUp.bind(this);
   }
   onSignUp() {
-    const { email, password, name } = this.state;
+    const { email, password } = this.state;
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
@@ -27,10 +26,6 @@ export class Login extends Component {
   render() {
     return (
       <View>
-        <TextInput
-          placeholder="name"
-          onChangeText={(name) => this.setState({ name })}
-        />
         <TextInput
           placeholder="email"
           onChangeText={(email) => this.setState({ email })}
@@ -46,4 +41,4 @@ export class Login extends Component {
   }
 }
 
-export default REGISTER;
+export default Login;

@@ -7,6 +7,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import LandingScreen from "./components/auth/Landing";
 import RegisterScreen from "./components/auth/Register";
+import LoginScreen from "./components/auth/Login";
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
@@ -68,6 +69,7 @@ export class App extends Component {
               name="Register"
               component={RegisterScreen}
             ></Stack.Screen>
+            <Stack.Screen name="Login" component={LoginScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       );
