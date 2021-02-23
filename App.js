@@ -1,13 +1,14 @@
 import { StatusBar } from "expo-status-bar";
 import React, { Component } from "react";
-import { Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 import * as firebase from "firebase";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-
 import LandingScreen from "./components/auth/Landing";
 import RegisterScreen from "./components/auth/Register";
+import LoginScreen from "./components/auth/Login";
+
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyCGy97Pshyl6fiqOJwUMtWLsT0neYlgYsI",
@@ -68,23 +69,15 @@ export class App extends Component {
               name="Register"
               component={RegisterScreen}
             ></Stack.Screen>
+            <Stack.Screen name="Login" component={LoginScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       );
     }
     return (
-      <Provider store={store}>
-        <NavigationContainer>
-          <Stack.Navigator initialRouteName="Landing">
-            <Stack.Screen
-              name="Main"
-              component={MainScreen}
-              options={{ headerShown: false }}
-            ></Stack.Screen>
-            <Stack.Screen name="Add" component={AddScreen}></Stack.Screen>
-          </Stack.Navigator>
-        </NavigationContainer>
-      </Provider>
+      <View style={{ flex: 1, justifyContent: "center" }}>
+        <Text>USer is logged in</Text>
+      </View>
     );
   }
 }
