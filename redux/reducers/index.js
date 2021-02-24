@@ -1,7 +1,7 @@
-import { combinedReducers } from "redux";
+import { combineReducers } from "redux";
 import { user } from "./user";
 
-const Reducers = combinedReducers({
+const Reducers = combineReducers({
   userState: user,
 });
 
