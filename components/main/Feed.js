@@ -10,6 +10,7 @@ export default function StopWatch() {
     },
     title: {
       marginTop: 225,
+      marginBottom: 25,
       paddingVertical: 8,
       borderWidth: 4,
       borderColor: "#20232a",
@@ -24,23 +25,33 @@ export default function StopWatch() {
 
   const [timer, setTimer] = useState(0);
   const [isActive, setIsActive] = useState(false);
-  const [isPauded, setIsPaused] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
   const countRef = useRef(null);
 
   const handleStart = () => {
-    // start button logic here
+    setIsActive(true);
+    setIsPaused(true);
+    countRef.current = setInterval(() => {
+      setTimer((timer) => timer + 1);
+    }, 1000);
   };
 
   const handlePause = () => {
-    // Pause button logic here
+    clearInterval(countRef.current);
+    setIsPaused(false);
   };
 
   const handleResume = () => {
-    // Resume button logic here
+    setIsPaused(true);
+    countRef.current = setInterval(() => {
+      setTimer((timer) => timer + 1);
+    }, 1000);
   };
 
   const handleReset = () => {
-    // Reset button logic here
+    clearInterval(countRef.current);
+    setIsPaused(false);
+    setTimer(0);
   };
   return (
     <View style={styles.container}>
