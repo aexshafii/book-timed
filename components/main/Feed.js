@@ -53,13 +53,26 @@ export default function StopWatch() {
     setIsPaused(false);
     setTimer(0);
   };
+
+  const formatTime = () => {
+    const getSeconds = `0${timer % 60}`.slice(-2);
+    const minutes = `${Math.floor(timer / 60)}`;
+    const getMinutes = `0${minutes % 60}`.slice(-2);
+    const getHours = `0${Math.floor(timer / 3600)}`.slice(-2);
+
+    return `${getHours} : ${getMinutes} : ${getSeconds}`;
+  };
   return (
     <View style={styles.container}>
       <Text style={styles.title}> {timer}</Text>
+      {!isActive && !isPaused ? (
+        <Button title="Start" onPress={handleStart}></Button>
+      ) : isPaused ? (
+        <Button title="Pause" onPress={handlePause}></Button>
+      ) : (
+        <Button title="Resume" onPress={handleResume}></Button>
+      )}
 
-      <Button title="Start" onPress={handleStart}></Button>
-      <Button title="Pause" onPress={handlePause}></Button>
-      <Button title="Resume" onPress={handleResume}></Button>
       <Button title="Reset" onPress={handleReset}></Button>
     </View>
   );
