@@ -64,7 +64,7 @@ export default function StopWatch() {
   };
   return (
     <View style={styles.container}>
-      <Text style={styles.title}> {timer}</Text>
+      <Text style={styles.title}> {formatTime()}</Text>
       {!isActive && !isPaused ? (
         <Button title="Start" onPress={handleStart}></Button>
       ) : isPaused ? (
