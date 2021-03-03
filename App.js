@@ -79,7 +79,6 @@ export class App extends Component {
               name="Register"
               component={RegisterScreen}
             ></Stack.Screen>
-            <Stack.Screen name="Login" component={LoginScreen} />
           </Stack.Navigator>
         </NavigationContainer>
       );
