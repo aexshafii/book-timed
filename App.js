@@ -8,6 +8,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import LandingScreen from "./components/auth/Landing";
 import RegisterScreen from "./components/auth/Register";
+<<<<<<< HEAD
 import LoginScreen from "./components/auth/Login";
 import MainScreen from "./components/Main";
 import AddScreen from "./components/main/Add";
@@ -18,6 +19,8 @@ import rootReducer from "./redux/reducers";
 import thunk from "redux-thunk";
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
+=======
+>>>>>>> parent of f2e99f3... feat: navigation to login screen and ability to login
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
