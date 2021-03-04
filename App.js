@@ -4,13 +4,12 @@ import { StyleSheet, Text, View } from "react-native";
 
 import * as firebase from "firebase";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
 import LandingScreen from "./components/auth/Landing";
 import RegisterScreen from "./components/auth/Register";
 import LoginScreen from "./components/auth/Login";
 import MainScreen from "./components/main/Main";
-import ProfileScreen from "./components/main/Profile";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createStackNavigator } from "@react-navigation/stack";
+
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyCGy97Pshyl6fiqOJwUMtWLsT0neYlgYsI",
@@ -25,19 +24,7 @@ const firebaseConfig = {
 if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig);
 }
-
 const Stack = createStackNavigator();
-
-const Tab = createBottomTabNavigator();
-
-function MyTabs() {
-  return (
-    <Tab.Navigator>
-      <Tab.Screen name="Main" component={MainScreen} />
-      <Tab.Screen name="Profile" component={ProfileScreen} />
-    </Tab.Navigator>
-  );
-}
 export class App extends Component {
   constructor(props) {
     super(props);
@@ -89,7 +76,13 @@ export class App extends Component {
     }
     return (
       <NavigationContainer>
-        <MyTabs />
+        <Stack.Navigator initialRouteName="Main">
+          <Stack.Screen
+            name="Main"
+            component={MainScreen}
+            options={{ headerShown: false }}
+          ></Stack.Screen>
+        </Stack.Navigator>
       </NavigationContainer>
     );
   }
