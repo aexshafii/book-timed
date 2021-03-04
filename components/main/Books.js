@@ -1,10 +1,11 @@
 import React from "react";
 import { View, Text } from "react-native";
+import Timer from "../Timer/Timer";
 
 export default function BooksScreen() {
   return (
     <View>
-      <Text> uo0ooiooppioopipoi</Text>
+      <Timer />
     </View>
   );
 }
