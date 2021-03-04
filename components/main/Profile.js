@@ -8,7 +8,6 @@ export default function ProfileScreen() {
   };
   return (
     <View>
-      <Text>Profile</Text>
       <Button title="Logout" onPress={() => onLogout()}></Button>
     </View>
   );
