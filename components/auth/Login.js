@@ -8,7 +8,7 @@ export class Login extends Component {
     this.state = {
       email: " ",
       password: " ",
-      name: " ",
+
     };
     this.onSignUp = this.onSignUp.bind(this);
   }
@@ -28,7 +28,7 @@ export class Login extends Component {
   render() {
     return (
       <View>
-        <TextInput
+        TextInput
           placeholder="emaill"
           onChangeText={(email) => this.setState({ email })}
         />
