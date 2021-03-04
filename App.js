@@ -1,7 +1,3 @@
-App.js 
-
-error: The following untracked working tree files would be overwritten by merge:
-
 import { StatusBar } from "expo-status-bar";
 import React, { Component } from "react";
 import { StyleSheet, Text, View } from "react-native";
@@ -100,4 +96,3 @@ export class App extends Component {
 }
 
 export default App;
-
