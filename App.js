@@ -1,3 +1,7 @@
+App.js 
+
+error: The following untracked working tree files would be overwritten by merge:
+
 import { StatusBar } from "expo-status-bar";
 import React, { Component } from "react";
 import { StyleSheet, Text, View } from "react-native";
@@ -8,7 +12,9 @@ import { createStackNavigator } from "@react-navigation/stack";
 import LandingScreen from "./components/auth/Landing";
 import RegisterScreen from "./components/auth/Register";
 import LoginScreen from "./components/auth/Login";
-
+import MainScreen from "./components/main/Main";
+import ProfileScreen from "./components/main/Profile";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyCGy97Pshyl6fiqOJwUMtWLsT0neYlgYsI",
@@ -26,6 +32,16 @@ if (firebase.apps.length === 0) {
 
 const Stack = createStackNavigator();
 
+const Tab = createBottomTabNavigator();
+
+function MyTabs() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Main" component={MainScreen} />
+      <Tab.Screen name="Profile" component={ProfileScreen} />
+    </Tab.Navigator>
+  );
+}
 export class App extends Component {
   constructor(props) {
     super(props);
@@ -48,6 +64,7 @@ export class App extends Component {
       }
     });
   }
+
   render() {
     const { loggedIn, loaded } = this.state;
     if (!loaded) {
@@ -75,11 +92,12 @@ export class App extends Component {
       );
     }
     return (
-      <View style={{ flex: 1, justifyContent: "center" }}>
-        <Text>USer is logged in</Text>
-      </View>
+      <NavigationContainer>
+        <MyTabs />
+      </NavigationContainer>
     );
   }
 }
 
 export default App;
+
