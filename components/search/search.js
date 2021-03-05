@@ -15,28 +15,12 @@ import { useState } from "react";
 import { useCallback } from "react";
 import { ActivityIndicator } from "react-native";
 import { useEffect } from "react";
-import AsyncStorageService from "./GetAmdSetOnLocalStorage";
 
 const Search = () => {
   const [searchValue, setSearchValue] = useState("");
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const asyncStorageService = new AsyncStorageService();
-  const [wishlist, setWishlist] = useState([]);
-
-  useEffect(() => {
-    const value = asyncStorageService.getValue();
-
-    value.then((value) => {
-      if (value === null) {
-        setWishlist([]);
-        return;
-      }
-
-      setWishlist(value);
-    });
-  }, [wishlist]);
 
   const handleSetSearchValue = useCallback(
     async (text) => setSearchValue(text),
@@ -95,14 +79,7 @@ const Search = () => {
 
       {books != undefined &&
         books.length > 0 &&
-        books.map((book, index) => (
-          <BookCard
-            wishlist={wishlist}
-            setWishlist={setWishlist}
-            book={book}
-            key={book.id}
-          />
-        ))}
+        books.map((book, index) => <BookCard book={book} key={book.id} />)}
 
       {books == undefined && (
         <TitleText style={{ color: "#ffc6d0", fontSize: 20 }}>

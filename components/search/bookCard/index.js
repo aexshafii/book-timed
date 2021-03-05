@@ -4,8 +4,6 @@ import { useState } from "react";
 import { Linking } from "react-native";
 import { StyleSheet, Text, View } from "react-native";
 
-import AsyncStorageService from "../GetAmdSetOnLocalStorage";
-
 import {
   Container,
   BookImage,
@@ -13,38 +11,11 @@ import {
   SeeMoreText,
   BuyThis,
   BuyThisText,
-  AddWishlist,
-  WishlistText,
 } from "./styles";
 
-const Bookcard = ({ book, wishlist, setWishlist }) => {
-  console.log(wishlist);
-
-  const asyncStorageService = new AsyncStorageService();
+const Bookcard = ({ book }) => {
   const { id, saleInfo, volumeInfo } = book;
   const [seeMore, SetSeeMore] = useState(false);
-
-  const [isFavorite, setFavorite] = useState(
-    wishlist.some((wishlistItem) => wishlistItem.book.id === id)
-  );
-
-  const handleAddToWishList = useCallback(
-    async (isFavorite, setWishlist) => {
-      if (isFavorite) {
-        const filtredWishlist = wishlist.filter(
-          (wishlist) => wishlist.book.id != id
-        );
-        setWishlist(filtredWishlist);
-        setFavorite(false);
-        await asyncStorageService.setValues(wishlist);
-      } else {
-        setWishlist([{ book }, ...wishlist]);
-        await asyncStorageService.setValues(wishlist);
-        setFavorite(true);
-      }
-    },
-    [isFavorite]
-  );
 
   const visibility = seeMore ? "flex" : "none";
   const { thumbnail } = volumeInfo.imageLinks;
@@ -78,12 +49,6 @@ const Bookcard = ({ book, wishlist, setWishlist }) => {
           </BuyThisText>
         </BuyThis>
       )}
-
-      <AddWishlist
-        onPress={async () => await handleAddToWishList(isFavorite, setWishlist)}
-      >
-        <WishlistText> Add to wishlist</WishlistText>
-      </AddWishlist>
     </View>
   );
 };
