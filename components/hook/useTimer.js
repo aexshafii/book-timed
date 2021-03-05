@@ -4,7 +4,7 @@ const useTimer = (initialState = 0) => {
   const [timer, setTimer] = useState(initialState);
   const [isActive, setIsActive] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
-  countRef = useRef(null);
+  const countRef = useRef(null);
 
   const handleStart = () => {
     setIsActive(true);
